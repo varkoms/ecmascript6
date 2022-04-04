@@ -152,3 +152,45 @@ helloPromise()
   .then(response => console.log(response))
   .then(() => console.log(`Hola`)) // Cuando algo falla, este then NO SE EJECUTA, si la promesa falla, se va directo a catch()
   .catch(reject => console.log(reject));
+
+// Cambio: Clases Modulos y Generadores
+// Codigo visto en la clase 5 del curso de ECMAScript 6+
+
+class calculator {
+  constructor() {
+    this.valueA = 0;
+    this.valueB = 0;
+  }
+
+  sumar(valueA, valueB) {
+    this.valueA = valueA;
+    this.valueB = valueB;
+    return this.valueA + this.valueB;
+  }
+}
+
+const calc = new calculator()
+console.log(calc.sumar(2, 2));
+
+// Import y Export
+const hello = require('./module')
+console.log(hello());
+
+// Generators
+// Funcion especial que retorna una serie de valores dependiendo del algoritmo definido
+
+function* helloWorld() {
+  if (true) {
+    // Guarda este estado de forma interna
+    yield 'Hello, ';
+  }
+
+  if (true) {
+    yield 'World';
+  }
+};
+
+const generatorHello = helloWorld();
+console.log(generatorHello.next().value); // "Hello,"
+console.log(generatorHello.next().value); // "World"
+console.log(generatorHello.next().value); // undefined
