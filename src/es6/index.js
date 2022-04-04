@@ -70,3 +70,25 @@ let team2 = ['Valeria', 'Jessica', 'Camila'];
 
 let education = ['David', ...team1, ...team2, 'Flavio'];
 console.log(education);
+
+// VAR, LET y CONST
+
+{
+  // Scope Global
+  var globalVar = 'Global Var';
+}
+
+{
+  // Scope local, solo puede ser accedida desde este bloque
+  let globalLet = 'Global Let';
+  console.log(globalLet);
+}
+
+console.log(globalVar);
+
+// Constantes. NO CAMBIA SU VALOR
+const a = 'b';
+console.log(a); // 'b'
+
+a = 'a'
+console.log(a); // TypeError: Assignment to constant variable
