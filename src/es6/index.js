@@ -49,7 +49,7 @@ console.log(lorem2);
 // Desestructuracion de Elementos
 // Separar los atributos de un objeto y almacenarlos en variables independientes.
 
-// ANTES
+// // ANTES
 let person = {
   'name': 'Cesar',
   'age': 33,
@@ -58,7 +58,7 @@ let person = {
 
 console.log(person.name, person.age, person.country);
 
-// ES6
+// // ES6
 let { name, age, country } = person;
 console.log(name, age, country);
 
@@ -92,3 +92,63 @@ console.log(a); // 'b'
 
 a = 'a'
 console.log(a); // TypeError: Assignment to constant variable
+
+// Asignacion de objetos
+
+let name = 'Cesar';
+let age = 33;
+
+// ES5
+obj = { name: name, age: age };
+
+// ES6
+obj2 = { name, age }
+console.log(obj2);
+
+// Arrow Functions
+// Las arrow functions no tienen un this vinculado, es decir, el this 
+// pasa a ser el del contexto que contiene a la arrow function.
+
+const names = [
+  { name: 'Oscar', age: 32 },
+  { name: 'Cesar', age: 33 }
+]
+
+// ANTES
+let listOfNames = names.map(function (item) {
+  console.log(item.name);
+})
+
+// ES6
+let listOfNames2 = names.map(item => console.log(item.name));
+
+// Una forma de presentar arrow functions
+const listOfNames3 = (name, age, country) => {
+  // Code here
+}
+
+// Si solo vamos a pasar un solo parametro, podemos usar la siguiente sintaxis
+const listOfNames4 = name => {
+  // Code here
+}
+
+// Un ejemplo mas
+const square = num => num * num; // 
+
+// PROMESAS
+// Con Promises, podemos reparar el famoso Callback Hell, 
+
+const helloPromise = () => {
+  return new Promise((resolve, reject) => {
+    if (true) {
+      resolve('Hey!');
+    } else {
+      reject('Ups, algo salio mal!');
+    }
+  });
+}
+
+helloPromise()
+  .then(response => console.log(response))
+  .then(() => console.log(`Hola`)) // Cuando algo falla, este then NO SE EJECUTA, si la promesa falla, se va directo a catch()
+  .catch(reject => console.log(reject));
